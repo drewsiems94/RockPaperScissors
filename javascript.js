@@ -15,39 +15,56 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerChoice == "rock") {
         if (computerChoice == "rock") {
-            return "It's a tie!";
+            return 0;
         } else if (computerChoice == "scissors") {
-            return "You win! Rock beats Scissors!";
+            return 1;
         } else {
-            return "You lose! Paper beats Rock!";
+            return -1;
         }
     }
 
     if (playerChoice == "scissors") {
         if (computerChoice == "rock") {
-            return "You lose! Rock beats Scissors!";
+            return -1;
         } else if (computerChoice == "scissors") {
-            return "It's a tie!";
+            return 0;
         } else {
-            return "You win! Scissors beats Paper!";
+            return 1;
         }
     }
 
     if (playerChoice == "paper") {
         if (computerChoice == "rock") {
-            return "You win! Paper beats Rock!";
+            return 1;
         } else if (computerChoice == "scissors") {
-            return "You lose! Scissors beats Paper!";
+            return -1;
         } else {
-            return "It's a tie!";
+            return 0;
         }
     }
 }
 
 function game() {
+    let userTally = 0;
     for (let i = 0; i < 5; i++) {
         let userInput = prompt("Please choose either rock, paper, or scissors: ");
-        console.log(playRound(userInput, computerPlay()));
+        let roundScore = playRound(userInput, computerPlay());
+        if (roundScore == 1) {
+            ++userTally;
+            console.log("You win this round!");
+        } else if (roundScore == 0) {
+            console.log("This round is a tie!");
+        } else {
+            --userTally;
+            console.log("You lose this round!");
+        }
+    }
+    if (userTally > 0) {
+        return "You win the game!";
+    } else if (userTally == 0) {
+        return "The game is a tie!";
+    } else {
+        return "You lose the game!";
     }
 }
 
