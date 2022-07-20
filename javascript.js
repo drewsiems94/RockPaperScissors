@@ -1,3 +1,13 @@
+let userTally = 0;
+let computerTally = 0;
+let result = "";
+
+const display_result = document.getElementById('display_result');
+const rock = document.getElementById('rock_btn');
+const paper = document.getElementById('paper_btn');
+const scissors = document.getElementById('scissors_btn');
+const display_winner = document.getElementById('display_winner');
+
 function computerPlay() {
     let play = Math.floor(Math.random() * 3);
     if (play == 0) {
@@ -10,62 +20,87 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
+
     let playerChoice = playerSelection.toLowerCase();
     let computerChoice = computerSelection.toLowerCase();
 
     if (playerChoice == "rock") {
         if (computerChoice == "rock") {
-            return 0;
+            result = `It's a tie!
+            Your current point total is ${userTally}.
+            The computer's current point total is ${computerTally}.`;
         } else if (computerChoice == "scissors") {
-            return 1;
+            ++userTally;
+            result = `You win!
+            Your current point total is ${userTally}.
+            The computer's current point total is ${computerTally}.`;
         } else {
-            return -1;
+            ++computerTally;
+            result = `You lose!
+            Your current point total is ${userTally}.
+            The computer's current point total is ${computerTally}.`;
         }
     }
 
     if (playerChoice == "scissors") {
         if (computerChoice == "rock") {
-            return -1;
+            ++computerTally;
+            result = `You lose!
+            Your current point total is ${userTally}.
+            The computer's current point total is ${computerTally}.`;
         } else if (computerChoice == "scissors") {
-            return 0;
+            result = `It's a tie!
+            Your current point total is ${userTally}.
+            The computer's current point total is ${computerTally}.`;
         } else {
-            return 1;
+            ++userTally;
+            result = `You win!
+            Your current point total is ${userTally}.
+            The computer's current point total is ${computerTally}.`;
         }
     }
 
     if (playerChoice == "paper") {
         if (computerChoice == "rock") {
-            return 1;
-        } else if (computerChoice == "scissors") {
-            return -1;
-        } else {
-            return 0;
-        }
-    }
-}
-
-function game() {
-    let userTally = 0;
-    for (let i = 0; i < 5; i++) {
-        let userInput = prompt("Please choose either rock, paper, or scissors: ");
-        let roundScore = playRound(userInput, computerPlay());
-        if (roundScore == 1) {
             ++userTally;
-            console.log("You win this round!");
-        } else if (roundScore == 0) {
-            console.log("This round is a tie!");
+            result = `You win!
+            Your current point total is ${userTally}.
+            The computer's current point total is ${computerTally}.`;
+        } else if (computerChoice == "scissors") {
+            ++computerTally;
+            result = `You lose!
+            Your current point total is ${userTally}.
+            The computer's current point total is ${computerTally}.`;
         } else {
-            --userTally;
-            console.log("You lose this round!");
+            result = `It's a tie!
+            Your current point total is ${userTally}.
+            The computer's current point total is ${computerTally}.`;
         }
     }
-    if (userTally > 0) {
-        return "You win the game!";
-    } else if (userTally == 0) {
-        return "The game is a tie!";
-    } else {
-        return "You lose the game!";
+
+    if (userTally == 5 || computerTally == 5) {
+        document.getElementById("rock_btn").disabled = true;
+        document.getElementById("paper_btn").disabled = true;
+        document.getElementById("scissors_btn").disabled = true;
+        if (userTally == 5) {
+            display_winner.textContent = "You won the game! Refresh the page to play again."
+        } else {
+            display_winner.textContent = "You lost the game! Refresh the page to play again."
+        }
     }
+
+    display_result.textContent = result;
 }
 
-console.log(game());
+rock_btn.addEventListener('click', function () {
+    playRound("rock", computerPlay());
+});
+
+paper_btn.addEventListener('click', function () {
+    playRound("paper", computerPlay());
+});
+
+scissors_btn.addEventListener('click', function () {
+    playRound("scissors", computerPlay());
+});
+
