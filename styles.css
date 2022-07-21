@@ -1,0 +1,89 @@
+body {
+    font-family: Impact, Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    margin: 0;
+    background-color: lightskyblue;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-weight: bolder;
+    margin: 36px;
+    color: #5B5E5C;
+}
+
+.rules {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    text-align: center;
+    margin: 24px;
+    color: #5B5E5C
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 24px;
+}
+
+#rock_btn {
+    background-image: url('https://as1.ftcdn.net/v2/jpg/00/55/21/18/1000_F_55211893_pMzGwbg4p7yElUGfc868m9dUXaknoWkU.jpg');
+    background-size: cover;
+    width: 300px;
+    height: 200px;
+    font-size: 2rem;
+}
+
+#paper_btn {
+    background-image: url('https://t4.ftcdn.net/jpg/02/52/31/37/240_F_252313796_E05BbRSpQwA1Fe3qspW0Oza3qn7CzVA3.jpg');
+    background-size: cover;
+    width: 300px;
+    height: 200px;
+    font-size: 2rem;
+}
+
+#scissors_btn {
+    background-image: url('https://t3.ftcdn.net/jpg/00/55/10/40/240_F_55104038_VMb5Bfm1cCVyh93VbJIoK4AQrlmyH0Wc.jpg');
+    background-size: cover;
+    width: 300px;
+    height: 200px;
+    font-size: 2rem;
+}
+
+#rock_btn,
+#paper_btn,
+#scissors_btn {
+    border-style: solid;
+    font-weight: bold;
+    background-color: plum;
+    color: white;
+    margin-top: 16px;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#display_result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #5B5E5C
+}
+
+#display_result {
+    margin: 24px;
+    font-size: 18px;
+}
+
