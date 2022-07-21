@@ -83,9 +83,9 @@ function playRound(playerSelection, computerSelection) {
         document.getElementById("paper_btn").disabled = true;
         document.getElementById("scissors_btn").disabled = true;
         if (userTally == 5) {
-            display_winner.textContent = "You won the game! Refresh the page to play again."
+            alert("You won the game! Refresh the page to play again.");
         } else {
-            display_winner.textContent = "You lost the game! Refresh the page to play again."
+            alert("You lost the game! Refresh the page to play again.");
         }
     }
 
