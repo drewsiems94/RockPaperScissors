@@ -1,4 +1,5 @@
 body {
+    height: 100vh;
     font-family: Impact, Roboto, sans-serif;
     display: flex;
     flex-direction: column;
